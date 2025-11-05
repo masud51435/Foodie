@@ -30,11 +30,12 @@ class PublicApi {
     );
   }
 
-  Future<CategoriesResponseModel> allCategories() async {
+  Future<List<CategoriesResponseModel>> allCategories() async {
     return await client.request(
       path: Links.categories,
       method: MethodType.get,
-      parse: CategoriesResponseModel.fromJson,
+      parseList: (list) =>
+          list.map((e) => CategoriesResponseModel.fromJson(e)).toList(),
     );
   }
 
@@ -46,11 +47,12 @@ class PublicApi {
     );
   }
 
-  Future<CampaignResponseModel> allCampaigns() async {
+  Future<List<CampaignResponseModel>> allCampaigns() async {
     return await client.request(
       path: Links.campaigns,
       method: MethodType.get,
-      parse: CampaignResponseModel.fromJson,
+      parseList: (list) =>
+          list.map((e) => CampaignResponseModel.fromJson(e)).toList(),
     );
   }
 
