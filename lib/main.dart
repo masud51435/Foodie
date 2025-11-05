@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodie/backend/initial_binding.dart';
+import 'package:foodie/core/app_colors.dart';
+import 'package:foodie/presentation/routes/app_routes.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
@@ -14,9 +17,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Foodie',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
       ),
+      initialBinding: InitialBinding(),
+      initialRoute: AppRoutes.home,
+      getPages: AppRoutes.routes,
     );
   }
 }
-
