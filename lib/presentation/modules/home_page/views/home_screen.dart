@@ -22,6 +22,7 @@ class HomeScreen extends GetView<HomeController> {
               AppHomeSlider(controller: controller),
               AppSectionHeading(text: 'Categories'),
               CategoriesList(controller: controller),
+              AppSectionHeading(text: 'Popular Food Nearby'),
             ],
           ),
         ),

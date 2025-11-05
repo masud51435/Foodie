@@ -11,13 +11,13 @@ class CategoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Obx(() {
       if (controller.categoryLoading.value) {
         return CategoryShimmer();
       }
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(left: 8, right: 8, bottom: 12),
         child: Row(
           children: controller.allCategories
               .map(

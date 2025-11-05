@@ -46,7 +46,7 @@ class AppRoundedImage extends StatelessWidget {
               : BorderRadius.zero,
           child: FadeInImage.assetNetwork(
             placeholder: 'assets/images/spinner.gif',
-            placeholderFit: BoxFit.fitWidth,
+
             fit: fit,
             color: color,
             image: imageUrl,

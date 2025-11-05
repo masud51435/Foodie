@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:foodie/backend/initial_binding.dart';
 import 'package:foodie/core/app_colors.dart';
