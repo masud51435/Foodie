@@ -33,7 +33,7 @@ class HomeController extends GetxController {
     fetchCategories();
     fetchPopularFoods();
     fetchCampaigns();
-    // fetchAllRestaurants();
+    fetchAllRestaurants();
   }
 
   void updatePageIndicator(index) => currentPageIndex.value = index;

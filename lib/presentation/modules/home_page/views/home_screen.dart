@@ -4,6 +4,7 @@ import 'package:foodie/presentation/modules/home_page/widgets/categories_list.da
 import 'package:foodie/presentation/modules/home_page/widgets/food_campaign_list.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/home_promo_slider.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/popular_food_list.dart';
+import 'package:foodie/presentation/modules/home_page/widgets/resturants_list.dart';
 import 'package:get/get.dart';
 
 import '../controller/home_controller.dart';
@@ -28,6 +29,8 @@ class HomeScreen extends GetView<HomeController> {
               PopularFoodList(controller: controller),
               AppSectionHeading(text: 'Food Campaign'),
               FoodCampaignList(controller: controller),
+              AppSectionHeading(text: 'Restaurant'),
+              RestaurantsList(controller: controller),
             ],
           ),
         ),
