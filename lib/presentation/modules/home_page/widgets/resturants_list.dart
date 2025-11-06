@@ -13,23 +13,28 @@ class RestaurantsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.restaurantsLoading.value) {
-        return CategoryShimmer();
+        return const SliverToBoxAdapter(child: CategoryShimmer());
       }
-      return Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, bottom: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: controller.allRestaurants
-              .map(
-                (restaurant) => RestaurantsCard(
-                  imageUrl: restaurant.coverPhotoFullUrl ?? '',
-                  title: restaurant.name ?? '',
-                  subtitle: restaurant.address ?? '',
-                  rating: restaurant.avgRating ?? 0.0,
-                  price: restaurant.priceStartsFrom ?? 0.0,
-                ),
-              )
-              .toList(),
+      return SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            if (index < controller.allRestaurants.length) {
+              final restaurant = controller.allRestaurants[index];
+              return RestaurantsCard(
+                imageUrl: restaurant.coverPhotoFullUrl ?? '',
+                title: restaurant.name ?? '',
+                subtitle: restaurant.address ?? '',
+                rating: restaurant.avgRating ?? 0.0,
+                price: restaurant.priceStartsFrom ?? 0.0,
+              );
+            }
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          },
+          childCount: controller.allRestaurants.length +
+              (controller.restaurantsPaginating.value ? 1 : 0),
         ),
       );
     });

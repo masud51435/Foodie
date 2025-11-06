@@ -10,29 +10,57 @@ import 'package:get/get.dart';
 import '../controller/home_controller.dart';
 import '../widgets/top_location_search.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController = ScrollController();
+  final HomeController controller = Get.find<HomeController>();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent &&
+        controller.hasMoreRestaurants) {
+      controller.fetchAllRestaurants(offset: controller.restaurantPage);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              TopLocationAndSearch(),
-              const SizedBox(height: 16),
-              AppHomeSlider(controller: controller),
-              AppSectionHeading(text: 'Categories'),
-              CategoriesList(controller: controller),
-              AppSectionHeading(text: 'Popular Food Nearby'),
-              PopularFoodList(controller: controller),
-              AppSectionHeading(text: 'Food Campaign'),
-              FoodCampaignList(controller: controller),
-              AppSectionHeading(text: 'Restaurant'),
-              RestaurantsList(controller: controller),
-            ],
-          ),
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            const SliverToBoxAdapter(child: TopLocationAndSearch()),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+            SliverToBoxAdapter(child: AppHomeSlider(controller: controller)),
+            SliverToBoxAdapter(child: AppSectionHeading(text: 'Categories')),
+            SliverToBoxAdapter(child: CategoriesList(controller: controller)),
+            SliverToBoxAdapter(child: AppSectionHeading(text: 'Popular Food Nearby')),
+            SliverToBoxAdapter(child: PopularFoodList(controller: controller)),
+            SliverToBoxAdapter(child: AppSectionHeading(text: 'Food Campaign')),
+            SliverToBoxAdapter(child: FoodCampaignList(controller: controller)),
+            SliverToBoxAdapter(child: AppSectionHeading(text: 'Restaurant')),
+            RestaurantsList(controller: controller),
+          ],
         ),
       ),
     );

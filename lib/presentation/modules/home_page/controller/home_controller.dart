@@ -16,6 +16,7 @@ class HomeController extends GetxController {
   RxBool campaignLoading = false.obs;
   RxBool popularFoodLoading = false.obs;
   RxBool restaurantsLoading = false.obs;
+  RxBool restaurantsPaginating = false.obs;
 
   RxList<Banner> allBanners = <Banner>[].obs;
   RxList<CategoriesResponseModel> allCategories =
@@ -25,6 +26,8 @@ class HomeController extends GetxController {
   RxList<Restaurant> allRestaurants = <Restaurant>[].obs;
 
   RxInt currentPageIndex = 0.obs;
+  int restaurantPage = 1;
+  bool hasMoreRestaurants = true;
 
   @override
   void onInit() {
@@ -33,7 +36,7 @@ class HomeController extends GetxController {
     fetchCategories();
     fetchPopularFoods();
     fetchCampaigns();
-    fetchAllRestaurants();
+    fetchAllRestaurants(offset: restaurantPage);
   }
 
   void updatePageIndicator(index) => currentPageIndex.value = index;
@@ -86,18 +89,33 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<void> fetchAllRestaurants() async {
-    restaurantsLoading.value = true;
+  Future<void> fetchAllRestaurants({required int offset}) async {
+    if (offset == 1) {
+      restaurantsLoading.value = true;
+    } else {
+      restaurantsPaginating.value = true;
+    }
     try {
+      if (!hasMoreRestaurants) return;
       final restaurantsResponse = await publicApi.allRestaurants(
-        offset: 1,
+        offset: offset,
         limit: 10,
       );
       if (restaurantsResponse.restaurants?.isNotEmpty ?? false) {
-        allRestaurants.value = restaurantsResponse.restaurants ?? [];
+        allRestaurants.addAll(restaurantsResponse.restaurants ?? []);
+        restaurantPage++;
+        if ((restaurantsResponse.restaurants?.length ?? 0) < 10) {
+          hasMoreRestaurants = false;
+        }
+      } else {
+        hasMoreRestaurants = false;
       }
     } finally {
-      restaurantsLoading.value = false;
+      if (offset == 1) {
+        restaurantsLoading.value = false;
+      } else {
+        restaurantsPaginating.value = false;
+      }
     }
   }
 }
