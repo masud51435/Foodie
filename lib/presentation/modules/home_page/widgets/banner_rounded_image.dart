@@ -7,7 +7,10 @@ class AppRoundedImage extends StatelessWidget {
     this.height,
     this.width,
     this.padding,
-    this.borderRadius = 16,
+    this.topLeftRadius = 16,
+    this.topRightRadius = 16,
+    this.bottomLeftRadius = 16,
+    this.bottomRightRadius = 16,
     required this.imageUrl,
     this.border,
     this.backgroundColor,
@@ -19,7 +22,10 @@ class AppRoundedImage extends StatelessWidget {
 
   final double? height, width;
   final EdgeInsetsGeometry? padding;
-  final double borderRadius;
+  final double topLeftRadius,
+      topRightRadius,
+      bottomLeftRadius,
+      bottomRightRadius;
   final String imageUrl;
   final BoxBorder? border;
   final Color? backgroundColor, color;
@@ -35,14 +41,15 @@ class AppRoundedImage extends StatelessWidget {
         height: height,
         width: width,
         padding: padding,
-        decoration: BoxDecoration(
-          border: border,
-          color: backgroundColor,
-          //  borderRadius: BorderRadius.circular(borderRadius),
-        ),
+        decoration: BoxDecoration(border: border, color: backgroundColor),
         child: ClipRRect(
           borderRadius: applyImageRadius
-              ? BorderRadius.circular(borderRadius)
+              ? BorderRadius.only(
+                  topLeft: Radius.circular(topLeftRadius),
+                  topRight: Radius.circular(topRightRadius),
+                  bottomLeft: Radius.circular(bottomLeftRadius),
+                  bottomRight: Radius.circular(bottomRightRadius),
+                )
               : BorderRadius.zero,
           child: FadeInImage.assetNetwork(
             placeholder: 'assets/images/spinner.gif',

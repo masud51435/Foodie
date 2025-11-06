@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
 import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/banner_rounded_image.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/simmer_loader.dart';
+import 'package:foodie/presentation/modules/home_page/widgets/home_slider_shimmer.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -14,11 +14,9 @@ class AppHomeSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Obx(() {
       if (controller.bannerLoading.value) {
-        return AppShimmerLoader(width: width, height: height * 0.2);
+        return const AppHomeSliderShimmer();
       } else {
         return Column(
           children: [
@@ -34,7 +32,7 @@ class AppHomeSlider extends StatelessWidget {
                   )
                   .toList(),
               options: CarouselOptions(
-                height: height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.2,
                 initialPage: controller.currentPageIndex.value,
                 onPageChanged: (index, _) =>
                     controller.updatePageIndicator(index),
@@ -42,7 +40,6 @@ class AppHomeSlider extends StatelessWidget {
                 enlargeCenterPage: true,
               ),
             ),
-
             AnimatedSmoothIndicator(
               activeIndex: controller.currentPageIndex.value,
               count: controller.allBanners.length,

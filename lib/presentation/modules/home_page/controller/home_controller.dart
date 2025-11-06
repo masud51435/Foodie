@@ -20,8 +20,8 @@ class HomeController extends GetxController {
   RxList<Banner> allBanners = <Banner>[].obs;
   RxList<CategoriesResponseModel> allCategories =
       <CategoriesResponseModel>[].obs;
-  RxList<CampaignResponseModel> allCampaigns = <CampaignResponseModel>[].obs;
   RxList<Product> popularFoods = <Product>[].obs;
+  RxList<CampaignResponseModel> allCampaigns = <CampaignResponseModel>[].obs;
   RxList<Restaurant> allRestaurants = <Restaurant>[].obs;
 
   RxInt currentPageIndex = 0.obs;
@@ -31,8 +31,8 @@ class HomeController extends GetxController {
     super.onInit();
     fetchBanners();
     fetchCategories();
-    // fetchCampaigns();
     fetchPopularFoods();
+    fetchCampaigns();
     // fetchAllRestaurants();
   }
 
@@ -62,18 +62,6 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<void> fetchCampaigns() async {
-    campaignLoading.value = true;
-    try {
-      final campaignResponse = await publicApi.allCampaigns();
-      if (campaignResponse.isNotEmpty) {
-        allCampaigns.value = campaignResponse;
-      }
-    } finally {
-      campaignLoading.value = false;
-    }
-  }
-
   Future<void> fetchPopularFoods() async {
     popularFoodLoading.value = true;
     try {
@@ -83,6 +71,18 @@ class HomeController extends GetxController {
       }
     } finally {
       popularFoodLoading.value = false;
+    }
+  }
+
+  Future<void> fetchCampaigns() async {
+    campaignLoading.value = true;
+    try {
+      final campaignResponse = await publicApi.allCampaigns();
+      if (campaignResponse.isNotEmpty) {
+        allCampaigns.value = campaignResponse;
+      }
+    } finally {
+      campaignLoading.value = false;
     }
   }
 

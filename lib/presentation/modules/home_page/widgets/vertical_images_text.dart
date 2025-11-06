@@ -10,13 +10,12 @@ class AppVerticalImageText extends StatelessWidget {
     required this.title,
     this.height = 80,
     this.width = 80,
-    this.radius = 10,
   });
 
   final VoidCallback? onTap;
 
   final String image, title;
-  final double height, width, radius;
+  final double height, width;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +24,14 @@ class AppVerticalImageText extends StatelessWidget {
       onTap: onTap,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           AppRoundedImage(
             height: height,
             width: width,
             imageUrl: image,
+
             fit: BoxFit.cover,
-            borderRadius: radius,
             padding: const EdgeInsets.all(10),
           ),
 
