@@ -14,10 +14,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    Container(color: Colors.red), 
-    Container(color: Colors.purple), 
-    Container(color: Colors.green), 
-    Container(color: Colors.blue), 
+    Container(color: Colors.red),
+    Container(color: Colors.purple),
+    Container(color: Colors.green),
+    Container(color: Colors.blue),
   ];
 
   void _onItemTapped(int index) {
@@ -57,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             const SizedBox(width: 30),
             IconButton(
-              icon: const Icon(Icons.shopping_cart),
+              icon: const Icon(Icons.edit_document),
               onPressed: () => _onItemTapped(3),
               color: _selectedIndex == 3 ? lightGreenColor : Colors.grey,
             ),
