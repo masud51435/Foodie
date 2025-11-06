@@ -28,12 +28,19 @@ class RestaurantsList extends StatelessWidget {
                 price: restaurant.priceStartsFrom ?? 0.0,
               );
             }
-            return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Center(child: CircularProgressIndicator()),
+            return Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Center(
+                child: Image.asset(
+                  'assets/images/spinner.gif',
+                  height: 60,
+                  width: 60,
+                ),
+              ),
             );
           },
-          childCount: controller.allRestaurants.length +
+          childCount:
+              controller.allRestaurants.length +
               (controller.restaurantsPaginating.value ? 1 : 0),
         ),
       );

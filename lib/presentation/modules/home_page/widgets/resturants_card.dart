@@ -29,7 +29,7 @@ class RestaurantsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double cardHeight = size.height * 0.135;
+    final double cardHeight = size.height * 0.139;
     final double imageWidth = size.width * 0.3;
     final theme = Theme.of(context);
 

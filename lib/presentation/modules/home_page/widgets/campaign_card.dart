@@ -34,7 +34,7 @@ class CampaignCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 10.0),
         child: SizedBox(
-          height: height * 0.137,
+          height: height * 0.139,
           width: width * 0.7,
           child: Card(
             elevation: 2,

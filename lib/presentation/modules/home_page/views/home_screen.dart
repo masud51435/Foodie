@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void _scrollListener() {
     if (_scrollController.position.pixels ==
             _scrollController.position.maxScrollExtent &&
-        controller.hasMoreRestaurants) {
+        controller.hasMoreRestaurants && !controller.restaurantsPaginating.value) {
       controller.fetchAllRestaurants(offset: controller.restaurantPage);
     }
   }
