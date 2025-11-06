@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/app_vertical_product_card.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/popular_food_shimmer.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/widgets/app_vertical_product_card.dart';
+import 'package:foodie/presentation/features/home/widgets/popular_food_shimmer.dart';
 import 'package:get/get.dart';
 
 class PopularFoodList extends StatelessWidget {

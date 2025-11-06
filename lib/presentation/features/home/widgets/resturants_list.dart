@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/resturants_card.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/restaurants_shimmer.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/widgets/resturants_card.dart';
+import 'package:foodie/presentation/features/home/widgets/restaurants_shimmer.dart';
 import 'package:get/get.dart';
 
 class RestaurantsList extends StatelessWidget {

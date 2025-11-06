@@ -1,12 +1,12 @@
 import 'package:foodie/backend/dio_client.dart';
 import 'package:foodie/backend/links.dart';
-import 'package:foodie/presentation/model/campaign_response_model.dart';
-import 'package:foodie/presentation/model/categories_response_model.dart';
-import 'package:foodie/presentation/model/config_response_model.dart';
-import 'package:foodie/presentation/model/popular_response_model.dart';
-import 'package:foodie/presentation/model/resturants_response_model.dart';
+import 'package:foodie/data/models/campaign_response_model.dart';
+import 'package:foodie/data/models/categories_response_model.dart';
+import 'package:foodie/data/models/config_response_model.dart';
+import 'package:foodie/data/models/popular_response_model.dart';
+import 'package:foodie/data/models/resturants_response_model.dart';
 
-import '../presentation/model/banner_response_model.dart';
+import 'package:foodie/data/models/banner_response_model.dart';
 import 'method_types.dart';
 
 class PublicApi {

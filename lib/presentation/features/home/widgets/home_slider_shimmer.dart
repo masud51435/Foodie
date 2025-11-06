@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/banner_shimmer.dart';
+import 'package:foodie/presentation/features/home/widgets/banner_shimmer.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

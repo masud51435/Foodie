@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
-import 'package:foodie/presentation/model/popular_response_model.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/banner_rounded_image.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/product_rating.dart';
+import 'package:foodie/data/models/popular_response_model.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/widgets/banner_rounded_image.dart';
+import 'package:foodie/presentation/features/home/widgets/product_rating.dart';
+
+
 
 class AppVerticalProductCard extends StatelessWidget {
   const AppVerticalProductCard({

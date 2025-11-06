@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/campaign_card.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/campaign_shimmer.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/widgets/campaign_card.dart';
+import 'package:foodie/presentation/features/home/widgets/campaign_shimmer.dart';
 import 'package:get/get.dart';
 
 class FoodCampaignList extends StatelessWidget {

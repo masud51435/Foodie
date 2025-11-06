@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/simmer_loader.dart';
+import 'package:foodie/presentation/features/home/widgets/simmer_loader.dart';
 
 
 class CategoryShimmer extends StatelessWidget {

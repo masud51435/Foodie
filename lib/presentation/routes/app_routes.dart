@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:foodie/presentation/common/bottom_nav_bar.dart';
-import '../modules/home_page/bindings/home_bindings.dart';
-import '../modules/home_page/views/home_screen.dart';
+import 'package:foodie/presentation/features/home/bindings/home_bindings.dart';
+import 'package:foodie/presentation/features/home/view/home_screen.dart';
 
 class AppRoutes {
   static const String home = '/home';

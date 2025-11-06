@@ -1,5 +1,5 @@
 import 'package:foodie/backend/public_api.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBindings extends Bindings {

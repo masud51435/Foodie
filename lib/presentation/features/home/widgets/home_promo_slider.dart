@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
-import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/banner_rounded_image.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/home_slider_shimmer.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
+import 'package:foodie/presentation/features/home/widgets/banner_rounded_image.dart';
+import 'package:foodie/presentation/features/home/widgets/home_slider_shimmer.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

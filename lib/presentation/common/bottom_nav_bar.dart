@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
-import 'package:foodie/presentation/modules/home_page/views/home_screen.dart';
+import 'package:foodie/presentation/features/home/view/home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -40,6 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
         height: 65,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

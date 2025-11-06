@@ -1,9 +1,9 @@
 import 'package:foodie/backend/public_api.dart';
-import 'package:foodie/presentation/model/banner_response_model.dart';
-import 'package:foodie/presentation/model/campaign_response_model.dart';
-import 'package:foodie/presentation/model/categories_response_model.dart';
-import 'package:foodie/presentation/model/popular_response_model.dart';
-import 'package:foodie/presentation/model/resturants_response_model.dart';
+import 'package:foodie/data/models/banner_response_model.dart';
+import 'package:foodie/data/models/campaign_response_model.dart';
+import 'package:foodie/data/models/categories_response_model.dart';
+import 'package:foodie/data/models/popular_response_model.dart';
+import 'package:foodie/data/models/resturants_response_model.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -32,11 +32,17 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchBanners();
-    fetchCategories();
-    fetchPopularFoods();
-    fetchCampaigns();
-    fetchAllRestaurants(offset: restaurantPage);
+    refreshAll();
+  }
+
+  Future<void> refreshAll() async {
+    await Future.wait([
+      fetchBanners(),
+      fetchCategories(),
+      fetchPopularFoods(),
+      fetchCampaigns(),
+      fetchAllRestaurants(offset: restaurantPage),
+    ]);
   }
 
   void updatePageIndicator(index) => currentPageIndex.value = index;
@@ -94,33 +100,33 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchAllRestaurants({required int offset}) async {
+    if (restaurantsLoading.value || restaurantsPaginating.value) return;
+    if (!hasMoreRestaurants) return;
+
     if (offset == 1) {
       restaurantsLoading.value = true;
     } else {
       restaurantsPaginating.value = true;
     }
+
     try {
-      if (!hasMoreRestaurants) return;
       final restaurantsResponse = await publicApi.allRestaurants(
         offset: offset,
         limit: 10,
       );
-      if (restaurantsResponse.restaurants?.isNotEmpty ?? false) {
-        allRestaurants.addAll(restaurantsResponse.restaurants ?? []);
+
+      final newRestaurants = restaurantsResponse.restaurants ?? [];
+      if (newRestaurants.isNotEmpty) {
+        allRestaurants.addAll(newRestaurants);
         restaurantPage++;
-        if ((restaurantsResponse.restaurants?.length ?? 0) < 10) {
-          hasMoreRestaurants = false;
-        }
+        if (newRestaurants.length < 10) hasMoreRestaurants = false;
       } else {
         hasMoreRestaurants = false;
       }
     } catch (e) {
     } finally {
-      if (offset == 1) {
-        restaurantsLoading.value = false;
-      } else {
-        restaurantsPaginating.value = false;
-      }
+      restaurantsLoading.value = false;
+      restaurantsPaginating.value = false;
     }
   }
 }

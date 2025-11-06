@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/banner_rounded_image.dart';
+import 'package:foodie/presentation/features/home/widgets/banner_rounded_image.dart';
 
 class AppVerticalImageText extends StatelessWidget {
   const AppVerticalImageText({
