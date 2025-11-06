@@ -4,7 +4,6 @@ import 'package:foodie/presentation/model/popular_response_model.dart';
 import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/banner_rounded_image.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/product_rating.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/product_title_text.dart';
 
 class AppVerticalProductCard extends StatelessWidget {
   const AppVerticalProductCard({
@@ -42,36 +41,41 @@ class AppVerticalProductCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitleText(text: product.name ?? ''),
-                    SizedBox(height: 5),
+                    Text(
+                      product.name ?? '',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
                     Text(
                       product.description ?? '',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Colors.grey.shade600,
+                      ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: greyColor),
                     ),
-                  ],
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "\$${product.price.toString()}",
-                      style: Theme.of(context).textTheme.titleMedium!.apply(
-                        fontWeightDelta: 2,
-                        fontSizeDelta: 1,
-                      ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "\$${product.price.toString()}",
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        ProductRating(rating: product.ratingCount.toString()),
+                      ],
                     ),
-                    ProductRating(rating: product.ratingCount.toString()),
                   ],
                 ),
               ),
