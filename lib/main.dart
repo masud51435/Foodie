@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
       ),
       initialBinding: InitialBinding(),
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.bottomNavBar,
       getPages: AppRoutes.routes,
     );
   }

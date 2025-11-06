@@ -37,7 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _scrollListener() {
     if (_scrollController.position.pixels ==
             _scrollController.position.maxScrollExtent &&
-        controller.hasMoreRestaurants && !controller.restaurantsPaginating.value) {
+        controller.hasMoreRestaurants &&
+        !controller.restaurantsPaginating.value) {
       controller.fetchAllRestaurants(offset: controller.restaurantPage);
     }
   }
@@ -54,7 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(child: AppHomeSlider(controller: controller)),
             SliverToBoxAdapter(child: AppSectionHeading(text: 'Categories')),
             SliverToBoxAdapter(child: CategoriesList(controller: controller)),
-            SliverToBoxAdapter(child: AppSectionHeading(text: 'Popular Food Nearby')),
+            SliverToBoxAdapter(
+              child: AppSectionHeading(text: 'Popular Food Nearby'),
+            ),
             SliverToBoxAdapter(child: PopularFoodList(controller: controller)),
             SliverToBoxAdapter(child: AppSectionHeading(text: 'Food Campaign')),
             SliverToBoxAdapter(child: FoodCampaignList(controller: controller)),

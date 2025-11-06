@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/category_simmer.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/resturants_card.dart';
+import 'package:foodie/presentation/modules/home_page/widgets/restaurants_shimmer.dart';
 import 'package:get/get.dart';
 
 class RestaurantsList extends StatelessWidget {
@@ -13,7 +13,12 @@ class RestaurantsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.restaurantsLoading.value) {
-        return const SliverToBoxAdapter(child: CategoryShimmer());
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => const RestaurantsShimmer(),
+            childCount: 3,
+          ),
+        );
       }
       return SliverList(
         delegate: SliverChildBuilderDelegate(

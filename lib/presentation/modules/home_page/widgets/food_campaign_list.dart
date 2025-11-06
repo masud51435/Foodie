@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/presentation/modules/home_page/controller/home_controller.dart';
 import 'package:foodie/presentation/modules/home_page/widgets/campaign_card.dart';
-import 'package:foodie/presentation/modules/home_page/widgets/category_simmer.dart';
+import 'package:foodie/presentation/modules/home_page/widgets/campaign_shimmer.dart';
 import 'package:get/get.dart';
 
 class FoodCampaignList extends StatelessWidget {
@@ -13,7 +13,16 @@ class FoodCampaignList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.campaignLoading.value) {
-        return CategoryShimmer();
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(left: 8, right: 8, bottom: 12),
+          child: Row(
+            children: List.generate(
+              3,
+              (index) => const CampaignShimmer(),
+            ),
+          ),
+        );
       }
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
