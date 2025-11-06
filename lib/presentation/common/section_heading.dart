@@ -22,9 +22,10 @@ class AppSectionHeading extends StatelessWidget {
         children: [
           Text(
             text,
-            style: Theme.of(context).textTheme.titleLarge!.apply(
+            style: Theme.of(context).textTheme.titleMedium!.apply(
               color: darkGreyColor,
-              fontWeightDelta: 3,
+              fontWeightDelta: 2,
+              fontSizeDelta: 2,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -34,7 +35,6 @@ class AppSectionHeading extends StatelessWidget {
             child: Text(
               'View All',
               style: TextStyle(
-                fontSize: 16,
                 decoration: TextDecoration.underline,
                 color: lightGreenColor,
                 decorationColor: lightGreenColor,

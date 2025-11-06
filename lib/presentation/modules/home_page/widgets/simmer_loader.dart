@@ -7,7 +7,7 @@ class AppShimmerLoader extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
-    this.radius = 15,
+    this.radius = 20,
     this.color,
   });
 
@@ -22,6 +22,7 @@ class AppShimmerLoader extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
+        margin: EdgeInsets.symmetric(horizontal: width * 0.1),
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(radius),

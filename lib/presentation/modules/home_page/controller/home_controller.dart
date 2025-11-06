@@ -32,7 +32,7 @@ class HomeController extends GetxController {
     fetchBanners();
     fetchCategories();
     // fetchCampaigns();
-    // fetchPopularFoods();
+    fetchPopularFoods();
     // fetchAllRestaurants();
   }
 
