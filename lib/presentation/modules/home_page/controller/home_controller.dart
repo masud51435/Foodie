@@ -48,6 +48,7 @@ class HomeController extends GetxController {
       if (bannerResponse.banners?.isNotEmpty ?? false) {
         allBanners.value = bannerResponse.banners ?? [];
       }
+    } catch (e) {
     } finally {
       bannerLoading.value = false;
     }
@@ -60,6 +61,7 @@ class HomeController extends GetxController {
       if (categoryResponse.isNotEmpty) {
         allCategories.value = categoryResponse;
       }
+    } catch (e) {
     } finally {
       categoryLoading.value = false;
     }
@@ -72,6 +74,7 @@ class HomeController extends GetxController {
       if (popularFoodResponse.products?.isNotEmpty ?? false) {
         popularFoods.value = popularFoodResponse.products ?? [];
       }
+    } catch (e) {
     } finally {
       popularFoodLoading.value = false;
     }
@@ -84,6 +87,7 @@ class HomeController extends GetxController {
       if (campaignResponse.isNotEmpty) {
         allCampaigns.value = campaignResponse;
       }
+    } catch (e) {
     } finally {
       campaignLoading.value = false;
     }
@@ -110,6 +114,7 @@ class HomeController extends GetxController {
       } else {
         hasMoreRestaurants = false;
       }
+    } catch (e) {
     } finally {
       if (offset == 1) {
         restaurantsLoading.value = false;

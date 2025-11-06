@@ -33,31 +33,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: lightGreenColor,
         foregroundColor: whiteColor,
+        elevation: 0,
         shape: CircleBorder(),
         onPressed: () => _onItemTapped(2),
         child: const Icon(Icons.shopping_cart),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        height: 50,
+        height: 65,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             IconButton(
-              icon: const Icon(Icons.home),
+              icon: const Icon(Icons.home_outlined),
               onPressed: () => _onItemTapped(0),
               color: _selectedIndex == 0 ? lightGreenColor : Colors.grey,
             ),
             IconButton(
-              icon: const Icon(Icons.favorite),
+              icon: const Icon(Icons.favorite_outline),
               onPressed: () => _onItemTapped(1),
               color: _selectedIndex == 1 ? lightGreenColor : Colors.grey,
             ),
             const SizedBox(width: 30),
             IconButton(
-              icon: const Icon(Icons.edit_document),
+              icon: const Icon(Icons.assignment_add),
               onPressed: () => _onItemTapped(3),
               color: _selectedIndex == 3 ? lightGreenColor : Colors.grey,
             ),

@@ -17,6 +17,7 @@ class AppRoundedImage extends StatelessWidget {
     this.color,
     this.fit,
     this.onPress,
+    this.placeholderScale = 3,
     this.applyImageRadius = true,
   });
 
@@ -30,6 +31,7 @@ class AppRoundedImage extends StatelessWidget {
   final BoxBorder? border;
   final Color? backgroundColor, color;
   final BoxFit? fit;
+  final double? placeholderScale;
   final bool applyImageRadius;
   final VoidCallback? onPress;
 
@@ -59,6 +61,8 @@ class AppRoundedImage extends StatelessWidget {
             imageErrorBuilder: (context, error, stackTrace) {
               return Icon(Icons.error, color: redColor);
             },
+            placeholderFit: BoxFit.none,
+            placeholderScale: placeholderScale,
           ),
         ),
       ),

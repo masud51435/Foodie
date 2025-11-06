@@ -29,7 +29,10 @@ class PopularFoodShimmer extends StatelessWidget {
                 Container(
                   height: height * 0.15,
                   width: width * 0.5,
-                  color: whiteColor,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: whiteColor,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),

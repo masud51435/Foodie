@@ -43,7 +43,10 @@ class AppInterceptor extends Interceptor {
       print('🟥 [ERROR] => ${appError.message} (Code: ${appError.statusCode})');
     }
 
-    SnackbarHelper.showError(appError.message);
+    SnackbarHelper.showError(
+      appError.message,
+      title: 'Error ${appError.statusCode}',
+    );
 
     // Forward the error as AppError instead of DioException
     handler.reject(
