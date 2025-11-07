@@ -94,9 +94,9 @@ The application interacts with the following base URL and endpoints:
 
 ## Screenshots
 
-| Mobile View | Web View |
-| :---------------------------------: | :---------------------------------: |
-| ![Mobile Screenshot](assets/images/foodie_img1.jpg) | ![Mobile Screenshot](assets/images/foodie_img2.jpg) | ![Web Screenshot](assets/images/screenshot_web.png) |
+| Mobile View | Mobile View | Web View | Web View |
+| :---: | :---: | :---: | :---: |
+| ![Mobile View](./assets/images/foodie_img1.jpg) | ![Mobile View](./assets/images/foodie_img2.jpg) | ![Submission View](./assets/images/submisson.png) | ![Invoice](./assets/images/invoice.png) |
 
 ## Demo Video
 
