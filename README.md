@@ -94,15 +94,13 @@ The application interacts with the following base URL and endpoints:
 
 ## Screenshots
 
-## Screenshots
-
 | Mobile View | Web View |
 | :---------------------------------: | :---------------------------------: |
-| ![Mobile Screenshot](docs/assets/screenshot_mobile.png) | ![Web Screenshot](docs/assets/screenshot_web.png) |
+| ![Mobile Screenshot](assets/images/foodie_img1.jpg) | [Mobile Screenshot](assets/images/foodie_img2.jpg) | ![Web Screenshot](assets/images/screenshot_web.png) |
 
 ## Demo Video
 
-[![Demo Video](docs/assets/video_thumbnail.png)](docs/assets/demo_video.mp4)
+[![Demo Video]](assets/images/foodie_video.mp4)
 *Click the image to watch the demo video.*
 
 ## Contributing
