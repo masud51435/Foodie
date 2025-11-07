@@ -61,7 +61,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 1.  **Clone the repository:**
     ```bash
-    git clone [<repository_url>](https://github.com/masud51435/Foodie.git)
+    git clone (https://github.com/masud51435/Foodie.git)
     cd foodie
     ```
 2.  **Get dependencies:**
