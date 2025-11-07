@@ -6,9 +6,6 @@ import 'package:foodie/presentation/features/home/widgets/home_promo_slider.dart
 import 'package:foodie/presentation/features/home/widgets/popular_food_list.dart';
 import 'package:foodie/presentation/features/home/widgets/resturants_list.dart';
 import 'package:get/get.dart';
-
-import 'package:foodie/core/utils/responsive_helper.dart';
-
 import 'package:foodie/presentation/features/home/controller/home_controller.dart';
 import 'package:foodie/presentation/features/home/widgets/top_location_search.dart';
 
@@ -46,8 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ResponsiveHelper.isMobile(context);
-
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
