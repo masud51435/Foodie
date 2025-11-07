@@ -2,6 +2,7 @@ import 'package:foodie/backend/public_api.dart';
 import 'package:foodie/data/models/banner_response_model.dart';
 import 'package:foodie/data/models/campaign_response_model.dart';
 import 'package:foodie/data/models/categories_response_model.dart';
+import 'package:foodie/data/models/config_response_model.dart';
 import 'package:foodie/data/models/popular_response_model.dart';
 import 'package:foodie/data/models/resturants_response_model.dart';
 import 'package:get/get.dart';
@@ -17,10 +18,12 @@ class HomeController extends GetxController {
   RxBool popularFoodLoading = false.obs;
   RxBool restaurantsLoading = false.obs;
   RxBool restaurantsPaginating = false.obs;
+  RxBool configLoading = false.obs;
 
   RxList<Banner> allBanners = <Banner>[].obs;
   RxList<CategoriesResponseModel> allCategories =
       <CategoriesResponseModel>[].obs;
+  Rx<ConfigResponseModel?> config = Rx<ConfigResponseModel?>(null);
   RxList<Product> popularFoods = <Product>[].obs;
   RxList<CampaignResponseModel> allCampaigns = <CampaignResponseModel>[].obs;
   RxList<Restaurant> allRestaurants = <Restaurant>[].obs;
@@ -37,6 +40,7 @@ class HomeController extends GetxController {
 
   Future<void> refreshAll() async {
     await Future.wait([
+      fetchConfig(),
       fetchBanners(),
       fetchCategories(),
       fetchPopularFoods(),
@@ -46,6 +50,17 @@ class HomeController extends GetxController {
   }
 
   void updatePageIndicator(index) => currentPageIndex.value = index;
+
+  Future<void> fetchConfig() async {
+    configLoading.value = true;
+    try {
+      final configResponse = await publicApi.configs();
+      config.value = configResponse;
+    } catch (e) {
+    } finally {
+      configLoading.value = false;
+    }
+  }
 
   Future<void> fetchBanners() async {
     bannerLoading.value = true;

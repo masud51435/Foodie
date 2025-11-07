@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
 import 'package:foodie/core/utils/responsive_helper.dart';
+import 'package:foodie/presentation/features/home/widgets/simmer_loader.dart';
+import 'package:get/get.dart';
+import 'package:foodie/presentation/features/home/controller/home_controller.dart';
 
 class TopLocationAndSearch extends StatelessWidget {
-  const TopLocationAndSearch({super.key});
+  const TopLocationAndSearch({super.key, required this.controller});
+
+  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
     final isMobile = ResponsiveHelper.isMobile(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
@@ -21,10 +27,17 @@ class TopLocationAndSearch extends StatelessWidget {
                       children: [
                         Icon(Icons.home_filled, color: greyColor),
                         SizedBox(width: 10),
-                        Text(
-                          "Sector 9, Uttara, Dhaka",
-                          style: TextStyle(color: greyColor),
-                        ),
+                        Obx(() {
+                          final isLoading = controller.configLoading.value;
+                          if (isLoading) {
+                            return AppShimmerLoader(width: 150, height: 15);
+                          }
+                          return Text(
+                            controller.config.value?.address ??
+                                'Unknown Location',
+                            style: TextStyle(color: greyColor),
+                          );
+                        }),
                       ],
                     ),
 
