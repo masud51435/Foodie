@@ -4,28 +4,28 @@ A modern, responsive food delivery application built with Flutter, GetX for stat
 
 ## Features
 
-*   **Responsive UI**: Adapts gracefully to different screen sizes (mobile, tablet, web) with dedicated layouts for navigation, sliders, and content lists.
-*   **Dynamic Home Screen**: Displays various sections including:
-    *   Auto-playing promotional banners.
-    *   Food categories.
-    *   Popular food items.
-    *   Food campaigns.
-    *   Restaurant listings with infinite scrolling.
-*   **State Management**: Utilizes GetX for efficient and reactive state management.
-*   **API Integration**: Handles network requests using Dio, with custom interceptors for error handling and logging.
-*   **Shimmer Loading**: Provides a smooth user experience during data fetching with shimmer loading effects.
-*   **Navigation**:
-    *   **Mobile**: Intuitive bottom navigation bar.
-    *   **Web/Tablet**: A clean app bar with a drawer (sidebar) for navigation.
-*   **Clean Architecture**: Organized codebase with clear separation of concerns (backend, core, data, presentation).
+- **Responsive UI**: Adapts gracefully to different screen sizes (mobile, tablet, web) with dedicated layouts for navigation, sliders, and content lists.
+- **Dynamic Home Screen**: Displays various sections including:
+  - Auto-playing promotional banners.
+  - Food categories.
+  - Popular food items.
+  - Food campaigns.
+  - Restaurant listings with infinite scrolling.
+- **State Management**: Utilizes GetX for efficient and reactive state management.
+- **API Integration**: Handles network requests using Dio, with custom interceptors for error handling and logging.
+- **Shimmer Loading**: Provides a smooth user experience during data fetching with shimmer loading effects.
+- **Navigation**:
+  - **Mobile**: Intuitive bottom navigation bar.
+  - **Web/Tablet**: A clean app bar with a drawer (sidebar) for navigation.
+- **Clean Architecture**: Organized codebase with clear separation of concerns (backend, core, data, presentation).
 
 ## Tech Stack
 
-*   **Framework**: Flutter
-*   **Language**: Dart
-*   **State Management**: GetX
-*   **HTTP Client**: Dio
-*   **UI/UX**: Material Design principles
+- **Framework**: Flutter
+- **Language**: Dart
+- **State Management**: GetX
+- **HTTP Client**: Dio
+- **UI/UX**: Material Design principles
 
 ## Project Structure
 
@@ -55,7 +55,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Prerequisites
 
-*   [Flutter SDK](https://flutter.dev/docs/get-started/install) installed and configured.
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) installed and configured.
 
 ### Installation
 
@@ -70,41 +70,41 @@ Follow these instructions to get a copy of the project up and running on your lo
     ```
 3.  **Run the application:**
 
-    *   **For Mobile (Android/iOS simulator or device):**
-        ```bash
-        flutter run
-        ```
-    *   **For Web (Chrome browser):**
-        ```bash
-        flutter run -d chrome
-        ```
+    - **For Mobile (Android/iOS simulator or device):**
+      ```bash
+      flutter run
+      ```
+    - **For Web (Chrome browser):**
+      ```bash
+      flutter run -d chrome
+      ```
 
 ## API Endpoints
 
 The application interacts with the following base URL and endpoints:
 
-*   **Base URL**: `https://stackfood-admin.6amtech.com/api`
-*   **Endpoints**:
-    *   `/v1/config`
-    *   `/v1/banners`
-    *   `/v1/categories`
-    *   `//v1/products/popular`
-    *   `/v1/campaigns/item`
-    *   `/v1/restaurants/get-restaurants/all`
+- **Base URL**: `https://stackfood-admin.6amtech.com/api`
+- **Endpoints**:
+  - `/v1/config`
+  - `/v1/banners`
+  - `/v1/categories`
+  - `//v1/products/popular`
+  - `/v1/campaigns/item`
+  - `/v1/restaurants/get-restaurants/all`
 
 ## Screenshots
 
-| Mobile View | Mobile View | Web View | Web View | Web View | Web View |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|                   Mobile View                   |                   Mobile View                   |               Web View                |               Web View                |               Web View                |               Web View                |
+| :---------------------------------------------: | :---------------------------------------------: | :-----------------------------------: | :-----------------------------------: | :-----------------------------------: | :-----------------------------------: |
 | ![Mobile View](./assets/images/foodie_img1.jpg) | ![Mobile View](./assets/images/foodie_img2.jpg) | ![Web View](./assets/images/web1.png) | ![Web View](./assets/images/web2.png) | ![Web View](./assets/images/web3.png) | ![Web View](./assets/images/web4.png) |
 
 ## Demo Video
 
-![[Mobile View Video]](assets/images/foodie_video.mp4)
-*Click here to watch the mobile view video.*
+![[Mobile View Video]](./assets/images/foodie_video.mp4)
+_Click here to watch the mobile view video._
 
-![[Web View Video]](assets/images/web_video.webm)
-*Click here to watch the web view video.*
+![[Web View Video]](./assets/images/web_video.webm)
+_Click here to watch the web view video._
 
 ## Contributing
 
