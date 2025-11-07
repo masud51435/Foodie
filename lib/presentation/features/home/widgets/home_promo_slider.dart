@@ -135,42 +135,45 @@ class _AppHomeSliderState extends State<AppHomeSlider> {
           );
         } else {
           // Web/Tablet View
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 8.0,
-                ),
-                child: AspectRatio(
-                  aspectRatio: 16 / 5,
-                  child: PageView.builder(
-                    controller: _pageController,
-                    itemCount: widget.controller.allBanners.length,
-                    onPageChanged: (index) =>
-                        widget.controller.updatePageIndicator(index),
-                    itemBuilder: (context, index) {
-                      final banner = widget.controller.allBanners[index];
-                      return AppRoundedImage(
-                        imageUrl: banner.imageFullUrl ?? '',
-                        fit: BoxFit.cover,
-                      );
-                    },
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 16 / 5,
+                    child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: widget.controller.allBanners.length,
+                      onPageChanged: (index) =>
+                          widget.controller.updatePageIndicator(index),
+                      itemBuilder: (context, index) {
+                        final banner = widget.controller.allBanners[index];
+                        return AppRoundedImage(
+                          imageUrl: banner.imageFullUrl ?? '',
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
 
-              AnimatedSmoothIndicator(
-                activeIndex: widget.controller.currentPageIndex.value,
-                count: widget.controller.allBanners.length,
-                effect: ScrollingDotsEffect(
-                  activeDotColor: lightGreenColor,
-                  dotColor: greyColor,
-                  dotHeight: 10,
-                  dotWidth: 10,
+                AnimatedSmoothIndicator(
+                  activeIndex: widget.controller.currentPageIndex.value,
+                  count: widget.controller.allBanners.length,
+                  effect: ScrollingDotsEffect(
+                    activeDotColor: lightGreenColor,
+                    dotColor: greyColor,
+                    dotHeight: 10,
+                    dotWidth: 10,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         }
       }
