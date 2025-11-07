@@ -116,4 +116,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any questions or feedback, please reach out to [Your Name/Email/GitHub Profile].
+- **Name:** Md Masud Rana
+- **Email:** masudrana82955@gmail.com
+- **Phone:** 01829346266
