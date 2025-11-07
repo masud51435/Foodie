@@ -48,8 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CustomScrollView(
           controller: _scrollController,
           slivers: [
-            const SliverToBoxAdapter(child: TopLocationAndSearch()),
-
+            SliverToBoxAdapter(child: TopLocationAndSearch()),
             SliverToBoxAdapter(child: AppHomeSlider(controller: controller)),
             SliverToBoxAdapter(child: AppSectionHeading(text: 'Categories')),
             CategoriesList(controller: controller),

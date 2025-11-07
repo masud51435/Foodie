@@ -54,7 +54,7 @@ class TopLocationAndSearch extends StatelessWidget {
               ),
             ),
           ),
-          !isMobile ? const SizedBox(height: 20) : const SizedBox.shrink(),
+          !isMobile ? const SizedBox(height: 20) : const SizedBox(height: 10),
         ],
       ),
     );
