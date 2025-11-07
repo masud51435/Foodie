@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
 import 'package:foodie/core/utils/responsive_helper.dart';
-import 'package:foodie/presentation/features/home/widgets/simmer_loader.dart';
+import 'package:foodie/presentation/common/simmer_loader.dart';
 import 'package:get/get.dart';
 import 'package:foodie/presentation/features/home/controller/home_controller.dart';
 
