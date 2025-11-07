@@ -10,17 +10,8 @@ class DioClient implements ApiClient {
   DioClient({required String baseUrl}) {
     _client = Dio()
       ..options.baseUrl = baseUrl
-      ..options.followRedirects = false
-      ..options.validateStatus = (status) {
-        return status! >= 200 && status < 300;
-      }
-      ..interceptors.add(AppInterceptor()) 
-      ..interceptors.add(
-        LogInterceptor(
-          responseBody: true,
-          requestBody: true,
-        ),
-      );
+      ..interceptors.add(AppInterceptor())
+      ..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
   }
 
   @override
@@ -84,7 +75,6 @@ class DioClient implements ApiClient {
 
       developer.log('DioClient.request: $response');
       result = await parseData(response, parse, parseList);
-
     } on DioException {
       // Interceptor already shows snackbar & logs
       rethrow;
@@ -106,6 +96,4 @@ class DioClient implements ApiClient {
       return response?.data as T;
     }
   }
-
-
 }

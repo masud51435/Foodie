@@ -5,7 +5,6 @@ import 'package:foodie/data/models/categories_response_model.dart';
 import 'package:foodie/data/models/config_response_model.dart';
 import 'package:foodie/data/models/popular_response_model.dart';
 import 'package:foodie/data/models/resturants_response_model.dart';
-
 import 'package:foodie/data/models/banner_response_model.dart';
 import 'method_types.dart';
 
