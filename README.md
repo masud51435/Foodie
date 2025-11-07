@@ -6,6 +6,7 @@ A modern, responsive food delivery application built with Flutter, GetX for stat
 
 - **Responsive UI**: Adapts gracefully to different screen sizes (mobile, tablet, web) with dedicated layouts for navigation, sliders, and content lists.
 - **Dynamic Home Screen**: Displays various sections including:
+  - Locations.
   - Auto-playing promotional banners.
   - Food categories.
   - Popular food items.
