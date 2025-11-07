@@ -7,6 +7,8 @@ import 'package:foodie/presentation/features/home/widgets/popular_food_list.dart
 import 'package:foodie/presentation/features/home/widgets/resturants_list.dart';
 import 'package:get/get.dart';
 
+import 'package:foodie/core/utils/responsive_helper.dart';
+
 import 'package:foodie/presentation/features/home/controller/home_controller.dart';
 import 'package:foodie/presentation/features/home/widgets/top_location_search.dart';
 
@@ -44,13 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
+
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
           slivers: [
             const SliverToBoxAdapter(child: TopLocationAndSearch()),
-            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
             SliverToBoxAdapter(child: AppHomeSlider(controller: controller)),
             SliverToBoxAdapter(child: AppSectionHeading(text: 'Categories')),
             CategoriesList(controller: controller),
