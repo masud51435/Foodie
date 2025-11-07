@@ -100,10 +100,10 @@ The application interacts with the following base URL and endpoints:
 
 ## Demo Video
 
-![[Mobile View Video]](./assets/images/foodie_video.mp4)
+[Mobile View Video](./assets/images/foodie_video.mp4)
 _Click here to watch the mobile view video._
 
-![[Web View Video]](./assets/images/web_video.webm)
+[[Web View Video]](./assets/images/web_video.webm)
 _Click here to watch the web view video._
 
 ## Contributing
