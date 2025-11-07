@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
 import 'package:foodie/core/utils/responsive_helper.dart';
 import 'package:foodie/presentation/features/home/controller/home_controller.dart';
-import 'package:foodie/presentation/features/home/widgets/banner_rounded_image.dart';
+import 'package:foodie/presentation/common/app_rounded_image.dart';
 import 'package:foodie/presentation/features/home/widgets/home_slider_shimmer.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

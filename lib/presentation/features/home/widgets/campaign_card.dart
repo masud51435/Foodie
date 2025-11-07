@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/app_colors.dart';
 import 'package:foodie/core/utils/responsive_helper.dart';
-import 'package:foodie/presentation/features/home/widgets/banner_rounded_image.dart';
+import 'package:foodie/presentation/common/app_rounded_image.dart';
 
 class CampaignCard extends StatelessWidget {
   final String imageUrl;
