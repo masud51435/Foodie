@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:foodie/backend/public_api.dart';
-import 'package:foodie/data/models/banner_response_model.dart';
 import 'package:foodie/data/models/campaign_response_model.dart';
 import 'package:foodie/data/models/categories_response_model.dart';
 import 'package:foodie/data/models/config_response_model.dart';
@@ -7,37 +7,49 @@ import 'package:foodie/data/models/popular_response_model.dart';
 import 'package:foodie/data/models/resturants_response_model.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/models/banner_response_model.dart';
+
 class HomeController extends GetxController {
   final PublicApi publicApi;
-
   HomeController({required this.publicApi});
 
-  RxBool bannerLoading = false.obs;
-  RxBool categoryLoading = false.obs;
-  RxBool campaignLoading = false.obs;
-  RxBool popularFoodLoading = false.obs;
-  RxBool restaurantsLoading = false.obs;
-  RxBool restaurantsPaginating = false.obs;
-  RxBool configLoading = false.obs;
+  // ------------------------ STATE ------------------------
+  final scrollController = ScrollController();
 
-  RxList<Banner> allBanners = <Banner>[].obs;
-  RxList<CategoriesResponseModel> allCategories =
-      <CategoriesResponseModel>[].obs;
-  Rx<ConfigResponseModel?> config = Rx<ConfigResponseModel?>(null);
-  RxList<Product> popularFoods = <Product>[].obs;
-  RxList<CampaignResponseModel> allCampaigns = <CampaignResponseModel>[].obs;
-  RxList<Restaurant> allRestaurants = <Restaurant>[].obs;
+  final bannerLoading = false.obs;
+  final categoryLoading = false.obs;
+  final campaignLoading = false.obs;
+  final popularFoodLoading = false.obs;
+  final restaurantsLoading = false.obs;
+  final restaurantsPaginating = false.obs;
+  final configLoading = false.obs;
 
-  RxInt currentPageIndex = 0.obs;
+  final allBanners = <Banners>[].obs;
+  final allCategories = <CategoriesResponseModel>[].obs;
+  final config = Rx<ConfigResponseModel?>(null);
+  final popularFoods = <Product>[].obs;
+  final allCampaigns = <CampaignResponseModel>[].obs;
+  final allRestaurants = <Restaurant>[].obs;
+
+  final currentPageIndex = 0.obs;
   int restaurantPage = 1;
   bool hasMoreRestaurants = true;
 
+  // ------------------------ LIFECYCLE ------------------------
   @override
   void onInit() {
     super.onInit();
     refreshAll();
+    _initScrollListener();
   }
 
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
+  }
+
+  // ------------------------ INITIAL LOAD ------------------------
   Future<void> refreshAll() async {
     await Future.wait([
       fetchConfig(),
@@ -49,14 +61,28 @@ class HomeController extends GetxController {
     ]);
   }
 
-  void updatePageIndicator(index) => currentPageIndex.value = index;
+  // ------------------------ SCROLL & PAGINATION ------------------------
+  void _initScrollListener() {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent &&
+          hasMoreRestaurants) {
+        fetchAllRestaurants(offset: restaurantPage);
+      }
+    });
+  }
+
+  // ------------------------   PAGE INDICATOR ------------------------
+  void updatePageIndicator(int index) => currentPageIndex.value = index;
+
+  // ------------------------ DATA FETCH METHODS ------------------------
 
   Future<void> fetchConfig() async {
     configLoading.value = true;
     try {
       final configResponse = await publicApi.configs();
       config.value = configResponse;
-    } catch (e) {
+    } catch (_) {
     } finally {
       configLoading.value = false;
     }
@@ -67,9 +93,9 @@ class HomeController extends GetxController {
     try {
       final bannerResponse = await publicApi.allBanners();
       if (bannerResponse.banners?.isNotEmpty ?? false) {
-        allBanners.value = bannerResponse.banners ?? [];
+        allBanners.assignAll(bannerResponse.banners!);
       }
-    } catch (e) {
+    } catch (_) {
     } finally {
       bannerLoading.value = false;
     }
@@ -80,9 +106,9 @@ class HomeController extends GetxController {
     try {
       final categoryResponse = await publicApi.allCategories();
       if (categoryResponse.isNotEmpty) {
-        allCategories.value = categoryResponse;
+        allCategories.assignAll(categoryResponse);
       }
-    } catch (e) {
+    } catch (_) {
     } finally {
       categoryLoading.value = false;
     }
@@ -93,9 +119,9 @@ class HomeController extends GetxController {
     try {
       final popularFoodResponse = await publicApi.popularFoods();
       if (popularFoodResponse.products?.isNotEmpty ?? false) {
-        popularFoods.value = popularFoodResponse.products ?? [];
+        popularFoods.assignAll(popularFoodResponse.products!);
       }
-    } catch (e) {
+    } catch (_) {
     } finally {
       popularFoodLoading.value = false;
     }
@@ -106,9 +132,9 @@ class HomeController extends GetxController {
     try {
       final campaignResponse = await publicApi.allCampaigns();
       if (campaignResponse.isNotEmpty) {
-        allCampaigns.value = campaignResponse;
+        allCampaigns.assignAll(campaignResponse);
       }
-    } catch (e) {
+    } catch (_) {
     } finally {
       campaignLoading.value = false;
     }
@@ -138,7 +164,7 @@ class HomeController extends GetxController {
       } else {
         hasMoreRestaurants = false;
       }
-    } catch (e) {
+    } catch (_) {
     } finally {
       restaurantsLoading.value = false;
       restaurantsPaginating.value = false;

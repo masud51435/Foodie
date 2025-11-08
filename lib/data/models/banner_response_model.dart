@@ -12,7 +12,7 @@ String bannerResponseModelToJson(BannerResponseModel data) =>
 
 class BannerResponseModel {
   final List<dynamic>? campaigns;
-  final List<Banner>? banners;
+  final List<Banners>? banners;
 
   BannerResponseModel({this.campaigns, this.banners});
 
@@ -23,8 +23,8 @@ class BannerResponseModel {
             : List<dynamic>.from(json["campaigns"]!.map((x) => x)),
         banners: json["banners"] == null
             ? []
-            : List<Banner>.from(
-                json["banners"]!.map((x) => Banner.fromJson(x)),
+            : List<Banners>.from(
+                json["banners"]!.map((x) => Banners.fromJson(x)),
               ),
       );
 
@@ -38,7 +38,7 @@ class BannerResponseModel {
   };
 }
 
-class Banner {
+class Banners {
   final int? id;
   final String? title;
   final String? type;
@@ -46,7 +46,7 @@ class Banner {
   final dynamic food;
   final String? imageFullUrl;
 
-  Banner({
+  Banners({
     this.id,
     this.title,
     this.type,
@@ -55,7 +55,7 @@ class Banner {
     this.imageFullUrl,
   });
 
-  factory Banner.fromJson(Map<String, dynamic> json) => Banner(
+  factory Banners.fromJson(Map<String, dynamic> json) => Banners(
     id: json["id"],
     title: json["title"],
     type: json["type"],
